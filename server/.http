@@ -1,0 +1,28 @@
+###
+GET http://localhost:3333/memories
+
+###
+GET http://localhost:3333/memories/2f2ff3dd-f972-493f-ba8c-1e96009cbce6
+
+###
+POST http://localhost:3333/memories
+content-type: application/json
+
+{
+  "content": "teste",
+  "coverUrl": "https://github.com/luancardosoti.png",
+  "isPublic": 0
+}
+
+###
+PATCH http://localhost:3333/memories/04e27ec7-e54e-4f0f-830f-7ea6a0df8068
+content-type: application/json
+
+{
+  "content": "teste update",
+  "coverUrl": "https://github.com/update/luancardosoti.png",
+  "isPublic": 1
+}
+
+###
+DELETE http://localhost:3333/memories/04e27ec7-e54e-4f0f-830f-7ea6a0df8068
