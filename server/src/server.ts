@@ -1,17 +1,39 @@
+import 'dotenv/config'
+
 import fastify from 'fastify'
-import cors from '@fastify/cors'
+import { resolve } from 'node:path'
+
 import { memoriesRoutes } from './routes/memories'
+import { authRoutes } from './routes/auth'
+import { uploadRoutes } from './routes/upload'
 
 const app = fastify()
-app.register(memoriesRoutes)
-app.register(cors, {
+
+app.register(require('@fastify/static'), {
+  root: resolve(__dirname, '../uploads'),
+  prefix: '/uploads',
+})
+
+app.register(require('@fastify/multipart'))
+
+app.register(require('@fastify/cors'), {
   origin: true,
 })
 
+app.register(require('@fastify/jwt'), {
+  secret: 'spacetime',
+})
+
+app.register(uploadRoutes)
+app.register(authRoutes)
+app.register(memoriesRoutes)
+
+const port = Number(process.env.APP_PORT) ?? 3000
+
 app
   .listen({
-    port: 4000,
+    port,
   })
   .then(() => {
-    console.log('🚀🚀🚀 HTTP server running on http://localhost:3333')
+    console.log(`🚀🚀🚀 HTTP server running on http://localhost:${port}`)
   })

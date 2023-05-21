@@ -1,8 +1,11 @@
 ###
 GET http://localhost:3333/memories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVhbiBDYXJkb3NvIiwiYXZhdGFyVXJsIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzcyMTEzODkxP3Y9NCIsInN1YiI6IjdkOWVlYjk5LTdiNDUtNGM0Zi05ZTRkLTFmYjEwNGI3ZThlZCIsImlhdCI6MTY4NDUzNjMxMiwiZXhwIjoxNjg3MTI4MzEyfQ.DmrY4aMB0ToypidrB9mOVjN3oVBusD02I0YT_IoYoBs
+
 
 ###
 GET http://localhost:3333/memories/2f2ff3dd-f972-493f-ba8c-1e96009cbce6
+
 
 ###
 POST http://localhost:3333/memories
@@ -14,6 +17,7 @@ content-type: application/json
   "isPublic": 0
 }
 
+
 ###
 PATCH http://localhost:3333/memories/04e27ec7-e54e-4f0f-830f-7ea6a0df8068
 content-type: application/json
@@ -24,5 +28,15 @@ content-type: application/json
   "isPublic": 1
 }
 
+
 ###
 DELETE http://localhost:3333/memories/04e27ec7-e54e-4f0f-830f-7ea6a0df8068
+
+
+### Register
+POST http://localhost:3333/register
+content-type: application/json
+
+{
+  "code": "18aaedd085a7c834c002"
+}
